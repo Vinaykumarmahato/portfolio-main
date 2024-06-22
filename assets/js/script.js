@@ -1,6 +1,8 @@
 'use strict';
 
-
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const filterButtons = document.querySelectorAll('[data-filter]');
