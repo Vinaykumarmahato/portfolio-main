@@ -4,6 +4,22 @@ document.addEventListener('contextmenu', function(event) {
   event.preventDefault();
 });
 
+
+
+
+document.addEventListener('copy', function(event) {
+  event.preventDefault();
+});
+
+document.addEventListener('cut', function(event) {
+  event.preventDefault();
+});
+
+document.addEventListener('selectstart', function(event) {
+  event.preventDefault();
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const filterButtons = document.querySelectorAll('[data-filter]');
   const selectItems = document.querySelectorAll('[data-select-item]');
