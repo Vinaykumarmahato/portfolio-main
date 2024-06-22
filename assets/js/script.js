@@ -2,6 +2,67 @@
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const selectItems = document.querySelectorAll('[data-select-item]');
+  const projectItems = document.querySelectorAll('[data-filter-item]');
+  const selectBox = document.querySelector('.filter-select-box');
+  const selectButton = selectBox.querySelector('[data-select]');
+  const selectValue = selectBox.querySelector('[data-select-value]');
+  const selectList = selectBox.querySelector('.select-list');
+
+  // Function to filter projects
+  const filterProjects = (filter) => {
+    projectItems.forEach((item) => {
+      if (filter === 'all' || item.dataset.category === filter) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  };
+
+  // Event listeners for filter buttons
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      filterButtons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
+      filterProjects(filter);
+    });
+  });
+
+  // Event listeners for select items
+  selectItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const filter = item.dataset.selectItem;
+      selectValue.textContent = item.textContent;
+      filterProjects(filter);
+      // Close the select list and hide other categories
+      selectList.classList.remove('show');
+      selectItems.forEach((i) => i.style.display = 'none');
+      item.style.display = 'block';
+    });
+  });
+
+  // Toggle select list
+  selectButton.addEventListener('click', () => {
+    selectList.classList.toggle('show');
+    // Show all items when the dropdown is opened
+    if (selectList.classList.contains('show')) {
+      selectItems.forEach((item) => item.style.display = 'block');
+    }
+  });
+
+  // Close select list when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!selectBox.contains(event.target)) {
+      selectList.classList.remove('show');
+    }
+  });
+});
+
+
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
