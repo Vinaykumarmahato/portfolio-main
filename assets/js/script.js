@@ -1,3 +1,29 @@
+document.addEventListener('keydown', function(event) {
+  // Check if Ctrl key and U key are pressed
+  if (event.ctrlKey && event.key === 'u') {
+    // Prevent default behavior
+    event.preventDefault();
+  }
+});
+
+
+document.addEventListener('keydown', function(event) {
+  // Check if Ctrl key, Shift key, and I key are pressed
+  if (event.ctrlKey && event.shiftKey && event.key === 'i') {
+    // Prevent default behavior
+    event.preventDefault();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  // Check if Cmd key, Option key, and I key are pressed
+  if (event.metaKey && event.altKey && event.key === 'i') {
+    // Prevent default behavior
+    event.preventDefault();
+  }
+});
+
+
 'use strict';
 
 document.addEventListener('contextmenu', function(event) {
